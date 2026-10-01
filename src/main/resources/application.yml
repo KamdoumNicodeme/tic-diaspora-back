@@ -12,6 +12,7 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: validate
+      dialect: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
         format_sql: true

@@ -66,6 +66,23 @@ public class AuthService {
         return new AuthToken(token, "Bearer", expiresAt, user.getMemberId(), user.getRole().name(), user.getEmail());
     }
 
+    @Transactional
+    public void changePassword(String email, String currentPassword, String newPassword, String confirmPassword) {
+        if (!newPassword.equals(confirmPassword)) {
+            throw new BusinessException("PASSWORD_CONFIRMATION_MISMATCH", "La confirmation du nouveau mot de passe ne correspond pas");
+        }
+        User user = users.findByEmailIgnoreCase(email)
+                .orElseThrow(() -> new BusinessException("BAD_CREDENTIALS", "Utilisateur introuvable"));
+        if (!user.isEnabled() || !passwordEncoder.matches(currentPassword, user.getPasswordHash())) {
+            throw new BusinessException("BAD_CREDENTIALS", "Mot de passe actuel incorrect");
+        }
+        if (passwordEncoder.matches(newPassword, user.getPasswordHash())) {
+            throw new BusinessException("PASSWORD_UNCHANGED", "Le nouveau mot de passe doit être différent de l'ancien");
+        }
+        user.setPasswordHash(passwordEncoder.encode(newPassword));
+        users.save(user);
+    }
+
     public record AuthToken(String accessToken, String tokenType, Instant expiresAt, java.util.UUID memberId, String role, String email) {
     }
 }

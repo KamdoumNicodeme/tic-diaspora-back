@@ -37,7 +37,7 @@ spring:
 
 app:
   cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200}
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200,https://*.netlify.app}
   security:
     issuer: tic-diaspora
     jwt-secret: ${JWT_SECRET:change-me-change-me-change-me-change-me-32bytes}

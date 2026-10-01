@@ -1,0 +1,8 @@
+package com.ticdiaspora.shared.domain.enums;
+
+public enum PenaltyType {
+    LATE_10,
+    LATE_20,
+    ABSENCE,
+    ABSENT_FROM_DELAY
+}

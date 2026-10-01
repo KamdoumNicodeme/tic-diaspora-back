@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-init-schema
+      author: codex
+      changes:
+        - sqlFile:
+            path: db/changelog/001-init-schema.sql
+            relativeToChangelogFile: false
+  - changeSet:
+      id: 002-member-mobile-money
+      author: codex
+      changes:
+        - addColumn:
+            tableName: members
+            columns:
+              - column:
+                  name: orange_money_number
+                  type: varchar(80)
+              - column:
+                  name: orange_money_account_name
+                  type: varchar(180)
+              - column:
+                  name: mtn_money_number
+                  type: varchar(80)
+              - column:
+                  name: mtn_money_account_name
+                  type: varchar(180)

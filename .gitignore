@@ -1,0 +1,21 @@
+# Build output
+target/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Logs
+*.log
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Runtime uploads / local files
+uploads/
+
+# OS
+.DS_Store

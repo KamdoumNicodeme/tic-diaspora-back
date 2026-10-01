@@ -2,14 +2,12 @@ package com.ticdiaspora.meeting.domain;
 
 import com.ticdiaspora.shared.domain.enums.MemberStatus;
 import com.ticdiaspora.shared.domain.exception.BusinessException;
-import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
-@Component
 public class ChairpersonRotationPolicy {
 
     public UUID proposeNextChairperson(List<ChairpersonCandidate> candidates) {

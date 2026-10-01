@@ -1,7 +1,7 @@
 package com.ticdiaspora.contribution.infrastructure.web;
 
 import com.ticdiaspora.audit.infrastructure.web.AuditService;
-import com.ticdiaspora.auth.application.CurrentUserService;
+import com.ticdiaspora.auth.infrastructure.CurrentUserService;
 import com.ticdiaspora.contribution.infrastructure.persistence.ContributionEntity;
 import com.ticdiaspora.contribution.infrastructure.persistence.ContributionJpaRepository;
 import com.ticdiaspora.contribution.infrastructure.persistence.ContributionPaymentEntity;

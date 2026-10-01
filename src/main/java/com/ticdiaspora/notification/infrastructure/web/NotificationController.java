@@ -1,6 +1,6 @@
 package com.ticdiaspora.notification.infrastructure.web;
 
-import com.ticdiaspora.auth.application.CurrentUserService;
+import com.ticdiaspora.auth.infrastructure.CurrentUserService;
 import com.ticdiaspora.notification.infrastructure.persistence.NotificationEntity;
 import com.ticdiaspora.notification.infrastructure.persistence.NotificationJpaRepository;
 import com.ticdiaspora.shared.domain.enums.NotificationChannel;

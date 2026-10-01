@@ -2,9 +2,7 @@ package com.ticdiaspora.penalty.domain;
 
 import com.ticdiaspora.shared.domain.enums.PenaltyType;
 import com.ticdiaspora.shared.domain.exception.ForbiddenOperationException;
-import org.springframework.stereotype.Component;
 
-@Component
 public class PenaltyRules {
 
     public long amountFor(PenaltyType type) {

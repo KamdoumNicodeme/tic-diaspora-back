@@ -1,6 +1,6 @@
 package com.ticdiaspora.beneficiary.infrastructure.web;
 
-import com.ticdiaspora.auth.application.CurrentUserService;
+import com.ticdiaspora.auth.infrastructure.CurrentUserService;
 import com.ticdiaspora.beneficiary.infrastructure.persistence.BeneficiaryConfirmationEntity;
 import com.ticdiaspora.beneficiary.infrastructure.persistence.BeneficiaryConfirmationJpaRepository;
 import com.ticdiaspora.shared.domain.enums.BeneficiaryConfirmationStatus;

@@ -5,7 +5,7 @@ import com.ticdiaspora.absence.domain.AbsenceRules;
 import com.ticdiaspora.absence.infrastructure.persistence.AbsenceRequestEntity;
 import com.ticdiaspora.absence.infrastructure.persistence.AbsenceRequestJpaRepository;
 import com.ticdiaspora.audit.infrastructure.web.AuditService;
-import com.ticdiaspora.auth.application.CurrentUserService;
+import com.ticdiaspora.auth.infrastructure.CurrentUserService;
 import com.ticdiaspora.meeting.infrastructure.persistence.MeetingEntity;
 import com.ticdiaspora.meeting.infrastructure.persistence.MeetingJpaRepository;
 import com.ticdiaspora.member.infrastructure.persistence.MemberJpaRepository;

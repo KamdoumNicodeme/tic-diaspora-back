@@ -1,7 +1,7 @@
 package com.ticdiaspora.penalty.infrastructure.web;
 
 import com.ticdiaspora.audit.infrastructure.web.AuditService;
-import com.ticdiaspora.auth.application.CurrentUserService;
+import com.ticdiaspora.auth.infrastructure.CurrentUserService;
 import com.ticdiaspora.charity.infrastructure.persistence.CharityFundMovementEntity;
 import com.ticdiaspora.charity.infrastructure.persistence.CharityFundMovementJpaRepository;
 import com.ticdiaspora.member.infrastructure.persistence.MemberEntity;

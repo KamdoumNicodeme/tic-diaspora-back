@@ -1,7 +1,5 @@
-package com.ticdiaspora.auth.application;
+package com.ticdiaspora.auth.infrastructure;
 
-import com.ticdiaspora.auth.infrastructure.UserEntity;
-import com.ticdiaspora.auth.infrastructure.UserJpaRepository;
 import com.ticdiaspora.shared.domain.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;

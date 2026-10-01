@@ -2,11 +2,9 @@ package com.ticdiaspora.tontine.domain;
 
 import com.ticdiaspora.shared.domain.enums.ContributionStatus;
 import com.ticdiaspora.shared.domain.exception.ForbiddenOperationException;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
-@Component
 public class TontineRules {
 
     public long expectedAmount(Collection<Long> activeMemberContributionAmounts) {

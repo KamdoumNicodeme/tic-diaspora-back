@@ -4,7 +4,7 @@ import com.ticdiaspora.attendance.domain.AttendanceDecision;
 import com.ticdiaspora.attendance.domain.AttendanceRules;
 import com.ticdiaspora.attendance.infrastructure.persistence.AttendanceRecordEntity;
 import com.ticdiaspora.attendance.infrastructure.persistence.AttendanceRecordJpaRepository;
-import com.ticdiaspora.auth.application.CurrentUserService;
+import com.ticdiaspora.auth.infrastructure.CurrentUserService;
 import com.ticdiaspora.meeting.infrastructure.persistence.MeetingEntity;
 import com.ticdiaspora.meeting.infrastructure.persistence.MeetingJpaRepository;
 import com.ticdiaspora.member.infrastructure.persistence.MemberEntity;

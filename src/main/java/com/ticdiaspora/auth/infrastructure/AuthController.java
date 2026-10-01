@@ -1,6 +1,5 @@
 package com.ticdiaspora.auth.infrastructure;
 
-import com.ticdiaspora.auth.application.AuthService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -2,12 +2,10 @@ package com.ticdiaspora.attendance.domain;
 
 import com.ticdiaspora.shared.domain.enums.AttendanceStatus;
 import com.ticdiaspora.shared.domain.enums.PenaltyType;
-import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-@Component
 public class AttendanceRules {
 
     public AttendanceDecision evaluateArrival(LocalDateTime expectedStartAt, LocalDateTime arrivalAt) {

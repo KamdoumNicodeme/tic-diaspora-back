@@ -2,7 +2,7 @@ package com.ticdiaspora.audit.infrastructure.web;
 
 import com.ticdiaspora.audit.infrastructure.persistence.AuditLogEntity;
 import com.ticdiaspora.audit.infrastructure.persistence.AuditLogJpaRepository;
-import com.ticdiaspora.auth.application.CurrentUserService;
+import com.ticdiaspora.auth.infrastructure.CurrentUserService;
 import com.ticdiaspora.shared.domain.enums.AuditAction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

@@ -1,12 +1,10 @@
 package com.ticdiaspora.absence.domain;
 
 import com.ticdiaspora.shared.domain.enums.AbsenceRequestStatus;
-import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.Instant;
 
-@Component
 public class AbsenceRules {
 
     public AbsenceClassification classify(Instant requestedAt, Instant meetingStartAt) {

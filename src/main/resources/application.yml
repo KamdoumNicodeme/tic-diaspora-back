@@ -1,61 +1,76 @@
-server:
-  port: ${PORT:8080}
+private applyNationalityChange(
+  client: IPhysicalPerson,
+  id: string,
+  resolution: Resolution
+): void {
 
-spring:
-  application:
-    name: tic-diaspora
-  datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/tic_diaspora}
-    username: ${DB_USERNAME:tic}
-    password: ${DB_PASSWORD:tic}
-  jpa:
-    open-in-view: false
-    hibernate:
-      ddl-auto: validate
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        format_sql: true
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 12MB
-  mail:
-    host: ${MAIL_HOST:localhost}
-    port: ${MAIL_PORT:1025}
-    username: ${MAIL_USERNAME:}
-    password: ${MAIL_PASSWORD:}
-    properties:
-      mail:
-        smtp:
-          auth: ${MAIL_SMTP_AUTH:false}
-          starttls:
-            enable: ${MAIL_SMTP_STARTTLS:false}
-  liquibase:
-    enabled: true
-    change-log: classpath:db/changelog/db.changelog-master.yml
+  const previousCountry: string =
+    id.substring('nationalities:'.length);
 
-app:
-  cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200,https://*.netlify.app}
-  security:
-    issuer: tic-diaspora
-    jwt-secret: ${JWT_SECRET:change-me-change-me-change-me-change-me-32bytes}
-    token-validity-minutes: ${JWT_VALIDITY_MINUTES:720}
-  uploads:
-    contribution-proofs-dir: ${CONTRIBUTION_PROOFS_DIR:./uploads/contribution-proofs}
-  mail:
-    enabled: ${MAIL_ENABLED:true}
-    from: ${MAIL_FROM:no-reply@ticdiaspora.org}
-  reminders:
-    meeting-48h-cron: "${MEETING_REMINDER_48H_CRON:0 */30 * * * *}"
-  bootstrap:
-    enabled: ${BOOTSTRAP_ENABLED:true}
-    president-email: ${BOOTSTRAP_PRESIDENT_EMAIL:president@ticdiaspora.org}
-    president-password: ${BOOTSTRAP_PRESIDENT_PASSWORD:President123!}
-    member-email: ${BOOTSTRAP_MEMBER_EMAIL:membre@ticdiaspora.org}
-    member-password: ${BOOTSTRAP_MEMBER_PASSWORD:Member123!}
+  const value: string | null =
+    this.nullableStringValue(resolution.value);
 
-logging:
-  level:
-    com.ticdiaspora: INFO
+  if (!value) {
+    return;
+  }
+
+  // Initialise nationality si nécessaire
+  if (!client.nationality) {
+    client.nationality = {};
+  }
+
+  const nationality = client.nationality;
+
+  // =========================================================
+  // MANUAL ENTRY
+  // nationalities:manual-1
+  // =========================================================
+  if (previousCountry.startsWith('manual-')) {
+
+    const alreadyExists: boolean =
+      nationality.first?.country === value ||
+      nationality.second?.country === value ||
+      nationality.third?.country === value;
+
+    if (alreadyExists) {
+      return;
+    }
+
+    if (!nationality.first) {
+      nationality.first = { country: value } as NationalityInfo;
+    } else if (!nationality.second) {
+      nationality.second = { country: value } as NationalityInfo;
+    } else if (!nationality.third) {
+      nationality.third = { country: value } as NationalityInfo;
+    }
+
+    return;
+  }
+
+  // =========================================================
+  // EXISTING ENTRY
+  // ex: GB -> AL
+  // =========================================================
+
+  if (nationality.first?.country === previousCountry) {
+    nationality.first.country = value;
+    return;
+  }
+
+  if (nationality.second?.country === previousCountry) {
+    nationality.second.country = value;
+    return;
+  }
+
+  if (nationality.third?.country === previousCountry) {
+    nationality.third.country = value;
+    return;
+  }
+
+  console.warn(
+    '[ClientProfilingChangeService] Nationality not found:',
+    previousCountry,
+    'client nationality:',
+    structuredClone(nationality)
+  );
+}
